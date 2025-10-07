@@ -34,7 +34,7 @@ export default function Hero() {
       </p>
       <MessageBubble
         message="You spend like money respawns 💸"
-        className="absolute top-30 rotate-10 hidden lg:block"
+        className="absolute top-20 -rotate-7 hidden lg:block"
       />
       <MessageBubble
         message="You treat money like it's a rumor, gone in seconds."
@@ -43,7 +43,7 @@ export default function Hero() {
 
       <MessageBubble
         message="Bank account: 0. Self-respect: also 0"
-        className="absolute top-30 right-0 rotate-10 hidden lg:block"
+        className="absolute top-20 right-0 rotate-10 hidden lg:block"
       />
 
       <MessageBubble
