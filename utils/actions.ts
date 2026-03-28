@@ -3,14 +3,18 @@ import { redirect } from "next/navigation";
 import { createClient } from "./supabase/server";
 
 export const signInWithGoogle = async () => {
-  const local = "http://localhost:3000/auth/callback";
-  const production = "https://bloomi.live/auth/callback";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+  const redirectTo = new URL("/auth/callback", siteUrl).toString();
+
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo:
-        process.env.ENVIRONMENT === "development" ? local : production,
+      redirectTo,
     },
   });
   if (error) {
